@@ -40,6 +40,11 @@ func load_text(text : String) -> void:
 func get_text() -> String:
 	return textEdit.text
 
+
+func disable_edit(disable = true) -> void:
+	textEdit.readonly = disable
+
+
 ### PRIVATE FUNCTIONS ###
 
 

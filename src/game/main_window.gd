@@ -26,6 +26,7 @@ var _last_selected_entry = null
 onready var toolbox = $HBoxContainer/VBoxContainer/ToolBox as ToolBox
 onready var editor = $HBoxContainer/VBoxContainer/Editor as Editor
 onready var calendar = $HBoxContainer/CalendarNavigation/PanelContainer/MarginContainer/VBoxContainer/Calendar as Calendar
+onready var dateLabel = $HBoxContainer/VBoxContainer/DateLabel as Label
 
 ### VIRTUAL FUNCTIONS (_init ...) ###
 func _ready():
@@ -75,3 +76,10 @@ func _on_calendar_day_selected(year : int, month : int, day : int) -> void:
 	LOG.pr(1, "Calendar day selected: %s" % _last_selected_entry)
 	var text = SAVER.load_entry(_last_selected_entry)
 	editor.load_text(text)
+	
+	dateLabel.text = (_last_selected_entry)
+	var comp = UTILS.compare_with_today([year, month, day])
+	if comp == -1:
+		editor.disable_edit()
+	elif comp == 0:
+		editor.disable_edit(false)

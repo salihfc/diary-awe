@@ -31,10 +31,15 @@ size_flags_stretch_ratio = 4.0
 [node name="ToolBox" parent="HBoxContainer/VBoxContainer" instance=ExtResource( 3 )]
 margin_bottom = 98.0
 
+[node name="DateLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 102.0
+margin_right = 1225.0
+margin_bottom = 127.0
+
 [node name="Editor" parent="HBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 102.0
+margin_top = 131.0
 margin_right = 1225.0
 margin_bottom = 900.0
 size_flags_vertical = 3

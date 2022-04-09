@@ -34,18 +34,20 @@ func _ready():
 
 ### PUBLIC FUNCTIONS ###
 func save_entry(entry_name : String, text : String) -> void:
-	var res = SAVE_DATA_CLASS.new(text)
+	var res = SAVE_DATA_CLASS.new(text, entry_name)
 	var path = SAVE_FORMAT % entry_name
 	var err = ResourceSaver.save(path, res)
 	if err != OK:
 		assert(0)
+	
+	LOG.pr(1, "RES SAVE [%s]" % [res.get_date()])
 
 
 func load_entry(entry_name):
 	var path = SAVE_FORMAT % [entry_name]
 	if ResourceLoader.exists(path):
 		var res = ResourceLoader.load(path)
-		LOG.pr(1, "RES [%s]" % [res.get_data()])
+		LOG.pr(1, "RES LOADED [%s]" % [res.get_date()])
 		return res.get_data()
 	return ""
 
