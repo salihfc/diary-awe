@@ -31,6 +31,12 @@ onready var textEdit = $PanelContainer/MarginContainer/TextEdit as TextEdit
 func _ready():
 	textEdit.text = ""
 
+	var all_words = CONFIG.get_all_words()
+	LOG.pr(4, "[%s]: [%s]" % [all_words.size(), all_words])
+	for word in all_words:
+		var color = CONFIG.get_word_color(word)
+		textEdit.add_keyword_color(word, color)
+
 
 ### PUBLIC FUNCTIONS ###
 func load_text(text : String) -> void:

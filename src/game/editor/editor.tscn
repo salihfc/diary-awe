@@ -29,5 +29,6 @@ margin_bottom = 893.0
 margin_right = 1522.0
 margin_bottom = 886.0
 text = "lorem lorem lorem ipsum"
+syntax_highlighting = true
 caret_block_mode = true
 caret_blink = true

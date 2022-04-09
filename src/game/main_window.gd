@@ -5,7 +5,7 @@ extends Control
 """
 
 ### SIGNAL ###
-
+signal main_menu_option_pressed()
 
 ### ENUM ###
 
@@ -76,6 +76,7 @@ func _save_entry():
 
 ### SIGNAL RESPONSES ###
 func _on_options_pressed():
+	emit_signal("main_menu_option_pressed")
 	LOG.pr(1, "Options button pressed")
 
 

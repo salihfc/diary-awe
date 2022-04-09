@@ -14,6 +14,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/game/calendar/calendar.gd"
 }, {
+"base": "PanelContainer",
+"class": "ColorOptionPicker",
+"language": "GDScript",
+"path": "res://src/game/dict_editor/color_option_picker.gd"
+}, {
+"base": "Resource",
+"class": "DiaryConfig",
+"language": "GDScript",
+"path": "res://src/resource_classes/diary_config.gd"
+}, {
 "base": "Resource",
 "class": "DiarySave",
 "language": "GDScript",
@@ -41,6 +51,8 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Calendar": "",
+"ColorOptionPicker": "",
+"DiaryConfig": "",
 "DiarySave": "",
 "Editor": "",
 "IconButton": "",
@@ -99,6 +111,14 @@ texture={
 "size_limit": 0,
 "stream": false,
 "svg/scale": 1.0
+}
+
+[input]
+
+quit={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
 }
 
 [physics]

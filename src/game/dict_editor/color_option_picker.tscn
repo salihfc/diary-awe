@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/game/dict_editor/color_option_picker.gd" type="Script" id=1]
+
+[node name="ColorOptionPicker" type="PanelContainer"]
+margin_left = -1.0
+margin_right = 165.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 159.0
+margin_bottom = 33.0
+alignment = 1
+
+[node name="WordLabel" type="Label" parent="HBoxContainer"]
+margin_left = 16.0
+margin_top = 6.0
+margin_right = 41.0
+margin_bottom = 20.0
+text = "test"
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+margin_left = 45.0
+margin_top = 6.0
+margin_right = 49.0
+margin_bottom = 20.0
+text = ":"
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="HBoxContainer"]
+margin_left = 53.0
+margin_right = 136.0
+margin_bottom = 26.0
+text = "picker0123"
+
+[connection signal="color_changed" from="HBoxContainer/ColorPickerButton" to="." method="_on_ColorPickerButton_color_changed"]
