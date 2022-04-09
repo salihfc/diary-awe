@@ -9,18 +9,48 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "PanelContainer",
+"class": "Calendar",
+"language": "GDScript",
+"path": "res://src/game/calendar/calendar.gd"
+}, {
+"base": "Resource",
+"class": "DiarySave",
+"language": "GDScript",
+"path": "res://src/resource_classes/diary_day_save_data.gd"
+}, {
+"base": "Control",
+"class": "Editor",
+"language": "GDScript",
+"path": "res://src/game/editor/editor.gd"
+}, {
+"base": "Button",
+"class": "IconButton",
+"language": "GDScript",
+"path": "res://src/game/toolbox/icon_button.gd"
+}, {
 "base": "Resource",
 "class": "Snippet",
 "language": "GDScript",
 "path": "res://addons/light_snippet/snippet.gd"
+}, {
+"base": "PanelContainer",
+"class": "ToolBox",
+"language": "GDScript",
+"path": "res://src/game/toolbox/toolbox.gd"
 } ]
 _global_script_class_icons={
-"Snippet": ""
+"Calendar": "",
+"DiarySave": "",
+"Editor": "",
+"IconButton": "",
+"Snippet": "",
+"ToolBox": ""
 }
 
 [application]
 
-config/name="PROJECT TEMPLATE"
+config/name="Diary Awe"
 run/main_scene="res://src/scene_manager.tscn"
 config/icon="res://icon.png"
 
@@ -30,15 +60,46 @@ CONFIG="*res://src/singletons/config.gd"
 LOG="*res://src/singletons/log.gd"
 UTILS="*res://src/singletons/utils.gd"
 TWEEN="*res://src/singletons/tween_manager.tscn"
+SAVER="*res://src/singletons/saver.gd"
 
 [debug]
 
 gdscript/warnings/treat_warnings_as_errors=true
 gdscript/warnings/unsafe_property_access=true
 
+[display]
+
+window/size/width=1536
+window/size/height=900
+window/size/borderless=true
+
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/light_snippet/plugin.cfg" )
+
+[importer_defaults]
+
+texture={
+"compress/bptc_ldr": 0,
+"compress/hdr_mode": 0,
+"compress/lossy_quality": 0.7,
+"compress/mode": 0,
+"compress/normal_map": 0,
+"detect_3d": false,
+"flags/anisotropic": false,
+"flags/filter": false,
+"flags/mipmaps": false,
+"flags/repeat": 0,
+"flags/srgb": 2,
+"process/HDR_as_SRGB": false,
+"process/fix_alpha_border": true,
+"process/invert_color": false,
+"process/normal_map_invert_y": false,
+"process/premult_alpha": false,
+"size_limit": 0,
+"stream": false,
+"svg/scale": 1.0
+}
 
 [physics]
 

@@ -1,0 +1,77 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/game/editor/editor.tscn" type="PackedScene" id=1]
+[ext_resource path="res://my_theme.theme" type="Theme" id=2]
+[ext_resource path="res://src/game/toolbox/toolbox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/game/main_window.gd" type="Script" id=4]
+[ext_resource path="res://src/game/calendar/calendar.tscn" type="PackedScene" id=5]
+
+[node name="MainWindow" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 2 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_right = 1225.0
+margin_bottom = 900.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="ToolBox" parent="HBoxContainer/VBoxContainer" instance=ExtResource( 3 )]
+margin_bottom = 98.0
+
+[node name="Editor" parent="HBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 102.0
+margin_right = 1225.0
+margin_bottom = 900.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 16.0
+
+[node name="CalendarNavigation" type="Control" parent="HBoxContainer"]
+margin_left = 1229.0
+margin_right = 1536.0
+margin_bottom = 900.0
+size_flags_horizontal = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/CalendarNavigation"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/CalendarNavigation/PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 300.0
+margin_bottom = 893.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/CalendarNavigation/PanelContainer/MarginContainer"]
+margin_right = 293.0
+margin_bottom = 886.0
+
+[node name="Label" type="Label" parent="HBoxContainer/CalendarNavigation/PanelContainer/MarginContainer/VBoxContainer"]
+margin_right = 293.0
+margin_bottom = 25.0
+text = "CALENDAR"
+align = 1
+valign = 1
+
+[node name="Calendar" parent="HBoxContainer/CalendarNavigation/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource( 5 )]
+margin_top = 29.0
+margin_right = 293.0
+margin_bottom = 886.0
+size_flags_vertical = 3

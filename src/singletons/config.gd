@@ -1,5 +1,7 @@
 extends Node
 
+const AUTO_SAVE_PERIOD = 60 * 5 # in seconds 5 min
+
 
 func _ready() -> void:
 	LOG.pr(3, "READY", "CONFIG")

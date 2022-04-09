@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://my_theme.theme" type="Theme" id=1]
+[ext_resource path="res://src/game/editor/editor.gd" type="Script" id=2]
+
+[node name="Editor" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 1529.0
+margin_bottom = 893.0
+
+[node name="TextEdit" type="TextEdit" parent="PanelContainer/MarginContainer"]
+margin_right = 1522.0
+margin_bottom = 886.0
+text = "lorem lorem lorem ipsum"
