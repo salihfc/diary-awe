@@ -1,6 +1,6 @@
 extends Node
 
-var LEVEL :int= 4
+var LEVEL :int= 1
 
 enum {
 	ALL = 0,

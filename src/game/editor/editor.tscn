@@ -28,7 +28,11 @@ margin_bottom = 893.0
 [node name="TextEdit" type="TextEdit" parent="PanelContainer/MarginContainer"]
 margin_right = 1522.0
 margin_bottom = 886.0
-text = "lorem lorem lorem ipsum"
+text = "TEST text"
+highlight_current_line = true
 syntax_highlighting = true
+show_line_numbers = true
+highlight_all_occurrences = true
+wrap_enabled = true
 caret_block_mode = true
 caret_blink = true
