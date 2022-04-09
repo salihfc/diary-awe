@@ -27,6 +27,7 @@ onready var toolbox = $HBoxContainer/VBoxContainer/ToolBox as ToolBox
 onready var editor = $HBoxContainer/VBoxContainer/Editor as Editor
 onready var calendar = $HBoxContainer/CalendarNavigation/PanelContainer/MarginContainer/VBoxContainer/Calendar as Calendar
 onready var dateLabel = $HBoxContainer/VBoxContainer/DateLabel as Label
+onready var autoSaveTimer = $AutoSaveTimer as Timer
 
 ### VIRTUAL FUNCTIONS (_init ...) ###
 func _ready():
@@ -45,9 +46,17 @@ func _ready():
 		self, "_on_calendar_day_selected"
 	)
 	
+	UTILS.bind(
+		autoSaveTimer, "timeout",
+		self, "_on_AutoSaveTimer_timeout"
+	)
+	
 	calendar.load_year(2022)
 	var datetime = OS.get_datetime(true)
 	_on_calendar_day_selected(datetime["year"], datetime["month"], datetime["day"])
+
+	autoSaveTimer.start(CONFIG.AUTO_SAVE_PERIOD)
+
 
 ### PUBLIC FUNCTIONS ###
 
@@ -60,6 +69,11 @@ func _get_date_string(day, month, year) -> String:
 	return "%s.%s.%s" % [year_str, month_str, day_str]
 
 
+func _save_entry():
+	var text = editor.get_text()
+	SAVER.save_entry(_last_selected_entry, text)
+
+
 ### SIGNAL RESPONSES ###
 func _on_options_pressed():
 	LOG.pr(1, "Options button pressed")
@@ -67,8 +81,7 @@ func _on_options_pressed():
 
 func _on_save_pressed():
 	LOG.pr(1, "Save button pressed")
-	var text = editor.get_text()
-	SAVER.save_entry(_last_selected_entry, text)
+	_save_entry()
 
 
 func _on_calendar_day_selected(year : int, month : int, day : int) -> void:
@@ -83,3 +96,9 @@ func _on_calendar_day_selected(year : int, month : int, day : int) -> void:
 		editor.disable_edit()
 	elif comp == 0:
 		editor.disable_edit(false)
+
+
+func _on_AutoSaveTimer_timeout():
+	LOG.pr(1, "Auto Save started [%s]" % [_last_selected_entry])
+	_save_entry()
+	autoSaveTimer.start(CONFIG.AUTO_SAVE_PERIOD)

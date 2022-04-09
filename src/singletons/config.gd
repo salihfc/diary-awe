@@ -1,6 +1,7 @@
 extends Node
 
-const AUTO_SAVE_PERIOD = 60 * 5 # in seconds 5 min
+const AUTO_SAVE_MIN = 1
+const AUTO_SAVE_PERIOD = 60 * AUTO_SAVE_MIN
 
 
 func _ready() -> void:
