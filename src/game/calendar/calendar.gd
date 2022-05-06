@@ -82,10 +82,13 @@ func _fill(year : int) -> void:
 			var comparison = UTILS.compare_date_arrays(current_date_arr, [year, month, day])
 			if comparison == 1:
 				button.disabled = true
-			elif comparison == 0:
+			elif comparison == 0: # same day [green]
 				button.self_modulate = Color("7bff69")
 			else:
-				button.self_modulate = Color("5958fd")
+				if SAVER.has_entry(UTILS.get_date_string(day, month, year)):
+					button.self_modulate = Color("ff697b")
+				else:
+					button.self_modulate = Color("5958fd")
 
 
 func _get_days_in_month(year : int, month : int) -> int:

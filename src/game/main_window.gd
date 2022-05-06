@@ -26,7 +26,7 @@ var _last_selected_entry = null
 onready var toolbox = $HBoxContainer/VBoxContainer/ToolBox as ToolBox
 onready var editor = $HBoxContainer/VBoxContainer/Editor as Editor
 onready var calendar = $HBoxContainer/CalendarNavigation/PanelContainer/MarginContainer/VBoxContainer/Calendar as Calendar
-onready var dateLabel = $HBoxContainer/VBoxContainer/DateLabel as Label
+onready var dateLabel = $HBoxContainer/VBoxContainer/MarginContainer/DateLabel as Label
 onready var autoSaveTimer = $AutoSaveTimer as Timer
 
 ### VIRTUAL FUNCTIONS (_init ...) ###
@@ -62,13 +62,6 @@ func _ready():
 
 
 ### PRIVATE FUNCTIONS ###
-func _get_date_string(day, month, year) -> String:
-	var day_str = str(day).pad_zeros(2)
-	var month_str = str(month).pad_zeros(2)
-	var year_str = str(year).pad_zeros(4)
-	return "%s.%s.%s" % [year_str, month_str, day_str]
-
-
 func _save_entry():
 	var text = editor.get_text()
 	SAVER.save_entry(_last_selected_entry, text)
@@ -86,7 +79,7 @@ func _on_save_pressed():
 
 
 func _on_calendar_day_selected(year : int, month : int, day : int) -> void:
-	_last_selected_entry = _get_date_string(day, month, year)
+	_last_selected_entry = UTILS.get_date_string(day, month, year)
 	LOG.pr(1, "Calendar day selected: %s" % _last_selected_entry)
 	var text = SAVER.load_entry(_last_selected_entry)
 	editor.load_text(text)

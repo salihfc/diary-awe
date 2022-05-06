@@ -15,8 +15,9 @@ func bind(
 		LOG.err("CANNOT BIND SIGNAL: (%s:%s) -> (%s:%s)" %\
 				[source_node, signal_name, target_node, method_name])
 	else:
-		LOG.pr(3, "Bind Signal: (%s:%s) -> (%s:%s)" %\
-				[source_node, signal_name, target_node, method_name])
+		pass
+#		LOG.pr(3, "Bind Signal: (%s:%s) -> (%s:%s)" %\
+#				[source_node, signal_name, target_node, method_name])
 
 
 func remove_all_chilren(node : Node) -> void:
@@ -29,6 +30,26 @@ func remove_all_chilren(node : Node) -> void:
 func date_array() -> Array:
 	var datetime = OS.get_datetime(true)
 	return [int(datetime.get("year")), int(datetime.get("month")), int(datetime.get("day"))]
+
+
+func get_date_string_today() -> String:
+	var today = date_array()
+	return get_date_string(today[2], today[1], today[0])
+
+
+func get_date_string(day, month, year) -> String:
+	var day_str = str(day).pad_zeros(2)
+	var month_str = str(month).pad_zeros(2)
+	var year_str = str(year).pad_zeros(4)
+	return "%s.%s.%s" % [year_str, month_str, day_str]
+
+
+func get_time_string() -> String:
+	var time = OS.get_time()
+	var hour_str = str(time["hour"]).pad_zeros(2)
+	var minute_str = str(time["minute"]).pad_zeros(2)
+	var second_str = str(time["second"]).pad_zeros(2)
+	return "%s:%s:%s" % [hour_str, minute_str, second_str]
 
 
 # 0: a == b

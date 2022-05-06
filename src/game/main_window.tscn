@@ -22,6 +22,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -36,20 +43,27 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 4.0
 
 [node name="ToolBox" parent="HBoxContainer/VBoxContainer" instance=ExtResource( 3 )]
-margin_bottom = 98.0
+margin_bottom = 102.0
 
-[node name="DateLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
-margin_top = 102.0
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
+margin_top = 106.0
 margin_right = 1225.0
-margin_bottom = 135.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+margin_bottom = 139.0
+custom_constants/margin_left = 10
+
+[node name="DateLabel" type="Label" parent="HBoxContainer/VBoxContainer/MarginContainer"]
+margin_left = 10.0
+margin_right = 1225.0
+margin_bottom = 33.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
+valign = 1
 
 [node name="Editor" parent="HBoxContainer/VBoxContainer" instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 139.0
+margin_top = 143.0
 margin_right = 1225.0
 margin_bottom = 900.0
 size_flags_vertical = 3
@@ -69,18 +83,18 @@ __meta__ = {
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/CalendarNavigation/PanelContainer"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 300.0
-margin_bottom = 893.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 299.0
+margin_bottom = 892.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/CalendarNavigation/PanelContainer/MarginContainer"]
-margin_right = 293.0
-margin_bottom = 886.0
+margin_right = 291.0
+margin_bottom = 884.0
 
 [node name="Calendar" parent="HBoxContainer/CalendarNavigation/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource( 5 )]
-margin_right = 293.0
-margin_bottom = 886.0
+margin_right = 291.0
+margin_bottom = 884.0
 size_flags_vertical = 3
 
 [node name="AutoSaveTimer" type="Timer" parent="."]

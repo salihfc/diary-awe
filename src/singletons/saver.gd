@@ -51,6 +51,15 @@ func load_entry(entry_name):
 		return res.get_data()
 	return ""
 
+
+func has_entry(entry_name):
+	var path = SAVE_FORMAT % [entry_name]
+	if ResourceLoader.exists(path):
+		var res = ResourceLoader.load(path)
+#		LOG.pr(1, "RES LOADED [%s]" % [res.get_date()])
+		var text = res.get_data()
+		return text.length() > 0
+	return false
 ### PRIVATE FUNCTIONS ###
 
 

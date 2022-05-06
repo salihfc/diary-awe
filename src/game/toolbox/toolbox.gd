@@ -28,6 +28,10 @@ signal toolbox_save_pressed()
 onready var saveButton = $MarginContainer/HBoxContainer/ButtonGroup/HBoxContainer/Save as IconButton
 onready var optionsButton = $MarginContainer/HBoxContainer/ButtonGroup/HBoxContainer/Options as IconButton
 
+onready var copyDateButton = $MarginContainer/HBoxContainer/ButtonGroup/HBoxContainer/HBoxContainer/CopyDateButton as Button
+onready var copyTimeButton = $MarginContainer/HBoxContainer/ButtonGroup/HBoxContainer/HBoxContainer/CopyTimeButton as Button
+
+
 ### VIRTUAL FUNCTIONS (_init ...) ###
 func _ready():
 	UTILS.bind(
@@ -40,6 +44,15 @@ func _ready():
 		self, "_on_Save_pressed"
 	)
 
+	UTILS.bind(
+		copyDateButton, "pressed",
+		self, "_on_copy_date_pressed"
+	)
+
+	UTILS.bind(
+		copyTimeButton, "pressed",
+		self, "_on_copy_time_pressed"
+	)
 
 ### PUBLIC FUNCTIONS ###
 
@@ -56,3 +69,11 @@ func _on_Options_pressed():
 
 func _on_Save_pressed():
 	emit_signal("toolbox_save_pressed")
+
+
+func _on_copy_date_pressed():
+	OS.set_clipboard(UTILS.get_date_string_today())
+
+
+func _on_copy_time_pressed():
+	OS.set_clipboard(UTILS.get_time_string())
